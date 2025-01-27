@@ -12,7 +12,7 @@ public class BibliotecaMuskiz {
                 // Se imprime menu
                 System.out.println("Gestión de la Biblioteca de Muskiz");
                 System.out.println("----------------------------------");
-                System.out.println("  1) Ejercicio 1");
+                System.out.println("  1) Estadisticas genero");
                 System.out.println("  2) Revisión de Entrega");
                 System.out.println("  3) Contabilición de Libros");
                 System.out.println("  4) Revisión de Inventario");
@@ -31,7 +31,9 @@ public class BibliotecaMuskiz {
                         break;
 
                     case 1:
-                        System.out.println("1");
+                        System.out.println("Estadisticas género");
+                        System.out.println("-------------------");
+                        ejercicio1(teclado);
                         break;
 
                     case 2:
@@ -57,10 +59,258 @@ public class BibliotecaMuskiz {
                 }
             } while (option != 0);
         } catch (Exception e) {
-            System.out.println("Error: caracter no valido (Valores validos 0 a 4)");
+            System.out.println("Error: carácter no valido (Valores validos 0 a 4)");
             main();
         } finally {
             teclado.close();
+        }
+    }
+
+    public static void ejercicio1(Scanner teclado) {
+        // Variables para el primer ejercicio (estadísticas de género)
+        int cont = 0;
+        int op;
+        int contPolitica = 0;
+        int contNarrativa = 0;
+        int contDrama = 0;
+        int contTerror = 0;
+        int votos1 = 0;
+        int votos2 = 0;
+        int votos3 = 0;
+        int votos4 = 0;
+        String genero1 = "";
+        String genero2 = "";
+        String genero3 = "";
+        String genero4 = "";
+        
+        try {
+            // Menú para preguntar al usuario cuál es su género favorito
+            while (cont < 100) {
+                System.out.println("Indica cuál es tu género favorito:");
+                System.out.println("1- Teoría Política");
+                System.out.println("2- Narrativa Fantástica");
+                System.out.println("3- Terror Espacial");
+                System.out.println("4- Drama Coreano");
+                System.out.print("Escoge su opción: ");
+                op = teclado.nextInt();
+                
+                switch (op) {
+                    case 1:
+                        contPolitica++;
+                        cont++;
+                        break;
+                    case 2:
+                        contNarrativa++;
+                        cont++;
+                        break;
+                    case 3:
+                        contDrama++;
+                        cont++;
+                        break;
+                    case 4:
+                        contTerror++;
+                        cont++;
+                        break;
+                    default:
+                        System.out.println("Este número no corresponde a ningún género, inténtelo de nuevo");
+                        break;
+                }
+    
+            }
+            // Encontrar cuántos votos ha obtenido cada género, cuál es el más votado y ordenarlos de mayor a menor votado
+            if (contPolitica >= contNarrativa && contPolitica >= contTerror && contPolitica >= contDrama) {
+                votos1 = contPolitica;
+                genero1 = "Teoría Política";
+                if (contNarrativa >= contTerror && contNarrativa >= contDrama) {
+                    votos2 = contNarrativa;
+                    genero2 = "Narrativa Fantástica";
+                    if (contTerror >= contDrama) {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama;
+                        genero3 = "Drama Coreano";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    }
+                } else if (contTerror >= contNarrativa && contTerror >= contDrama) {
+                    votos2 = contTerror;
+                    genero2 = "Terror Espacial";
+                    if (contNarrativa >= contDrama) {
+                        votos3 = contNarrativa;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contNarrativa;
+                        genero4 = "Narrativa Fantástica";
+                    }
+                } else if (contDrama >= contNarrativa && contDrama >= contTerror) {
+                    votos2 = contDrama;
+                    genero2 = "Narrativa Fantástica";
+                    if (contNarrativa >= contTerror) {
+                        votos3 = contNarrativa;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    } else {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contNarrativa;
+                        genero4 = "Narrativa Fantástica";
+                    }
+                }
+            } else if (contNarrativa >= contPolitica && contNarrativa >= contTerror && contNarrativa >= contDrama) {
+                votos1 = contNarrativa;
+                genero1 = "Narrativa Fantástica";
+                if (contPolitica >= contTerror && contPolitica >= contDrama) {
+                    votos2 = contPolitica;
+                    genero2 = "Teoría Política";
+                    if (contTerror >= contDrama) {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama ;
+                        genero3 = "Dreama Coreano";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    }
+                } else if (contTerror >= contPolitica && contTerror >= contDrama) {
+                    votos2 = contTerror;
+                    genero2 = "Terror Espacial";
+                    if (contPolitica >= contDrama) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama;
+                        genero3 = "Drama Coreano";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                } else if (contDrama >= contPolitica && contDrama >= contTerror) {
+                    votos2 = contDrama;
+                    genero2 = "Drama Coreano";
+                    if (contPolitica >= contTerror) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    } else {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                }
+            } else if (contTerror >= contPolitica && contTerror >= contNarrativa && contTerror >= contDrama) {
+                votos1 = contTerror;
+                genero1 = "Terror Espacial";
+                if (contPolitica >= contNarrativa &&  contPolitica >= contDrama) {
+                    votos2 = contPolitica;
+                    genero2 = "Teoría Política";
+                    if (contNarrativa >= contDrama) {
+                        votos3 = contNarrativa;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama;
+                        genero3 = "Drama Coreano";
+                        votos4 = contNarrativa;
+                        genero4 = "Narrativa Fantástica";
+                    }
+                } else if (contNarrativa >= contPolitica && contNarrativa >= contDrama) {
+                    votos2 = contNarrativa;
+                    genero2 = "Narrativa Fantástica";
+                    if (contPolitica >= contDrama) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else {
+                        votos3 = contDrama;
+                        genero3 = "Drama Coreano";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                } else if (contDrama >= contPolitica && contDrama >= contNarrativa) {
+                    votos2 = contDrama;
+                    genero2 = "Drama Coreano";
+                    if (contPolitica >= contNarrativa) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contNarrativa;
+                        genero4 = "Narrativa Fantástica";
+                    } else {
+                        votos3 = contNarrativa;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                }
+            } else {
+                votos1 = contDrama;
+                genero1 = "Drama Coreano";
+                if (contPolitica >= contNarrativa &&  contPolitica >= contTerror) {
+                    votos2 = contPolitica;
+                    genero2 = "Teoría Política";
+                    if (contNarrativa >= contTerror) {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contDrama;
+                        genero4 = "Drama Coreano";
+                    } else{
+                        votos3 = contDrama;
+                        genero3 = "Drama Coreano";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    }
+                } else if (contNarrativa >= contPolitica && contNarrativa >= contTerror) {
+                    votos2 = contNarrativa;
+                    genero2 = "Narrativa Fantástica";
+                    if (contPolitica >= contTerror) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contTerror;
+                        genero4 = "Terror Espacial";
+                    } else {
+                        votos3 = contTerror;
+                        genero3 = "Terror Espacial";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                } else if (contTerror >= contPolitica && contTerror >= contNarrativa) {
+                    votos2 = contTerror;
+                    genero2 = "Terror Espacial";
+                    if (contPolitica >= contNarrativa) {
+                        votos3 = contPolitica;
+                        genero3 = "Teoría Política";
+                        votos4 = contNarrativa;
+                        genero4 = "Narrativa Fantástica";
+                    } else{
+                        votos3 = contNarrativa;
+                        genero3 = "Narrativa Fantástica";
+                        votos4 = contPolitica;
+                        genero4 = "Teoría Política";
+                    }
+                }
+            }
+            // Género más votadoo
+            System.out.println("El género más votado ha sido " + genero1 + ", con " + votos1 + " votos.");
+            // Géneros ordenados de mayor a menor
+            System.out.println("El orden de géneros má votados es: " + genero1 + " con " + votos1 + " votos, " + genero2 + " con " + votos2 + " votos, " + genero3 + " con " + votos3 + " votos y " + genero4 + " con " + votos4 + " votos.");
+            
+        } catch (Exception e) {
+            // Se indica el error que se ha sucedido
+            System.out.println("Se ha producido un error: " + e.getMessage());
         }
     }
 
