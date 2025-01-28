@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class BibliotecaMuskiz {
@@ -312,6 +314,38 @@ public class BibliotecaMuskiz {
             // Se indica el error que se ha sucedido
             System.out.println("Se ha producido un error: " + e.getMessage());
         }
+    }
+
+    public static void ejercicio2(Scanner teclado) {
+
+        // Configuración del formato de fecha
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Entrada de datos
+        System.out.print("Ingrese la fecha de reserva del libro (formato: AAAA-MM-DD): ");
+        String fechaEntregaStr = teclado.nextLine();
+
+        System.out.print("Ingrese el número máximo de días de reserva: ");
+        int diasMaximos = teclado.nextInt();
+
+        // Obtener la fecha actual
+        LocalDate fechaActual = LocalDate.now();
+
+        // Parsear la fecha de entrega
+        LocalDate fechaEntrega = LocalDate.parse(fechaEntregaStr, formatoFecha);
+
+        // Calcular la fecha límite de reserva
+        LocalDate fechaLimite = fechaEntrega.plusDays(diasMaximos);
+
+        // Validar si se ha pasado la fecha
+        if (fechaActual.isAfter(fechaLimite)) {
+            System.out.println("Se ha pasado de fecha.");
+            System.out.println("Se debe penalizar al usuario");
+        } else {
+            System.out.println("La fecha está dentro de plazo.");
+        }
+
+        teclado.close();
     }
 
     public static void ejercicio3b(Scanner teclado) {
