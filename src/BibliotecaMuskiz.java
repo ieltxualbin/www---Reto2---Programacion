@@ -12,7 +12,7 @@ public class BibliotecaMuskiz {
                 // Se imprime menu
                 System.out.println("Gestión de la Biblioteca de Muskiz");
                 System.out.println("----------------------------------");
-                System.out.println("  1) Estadisticas genero");
+                System.out.println("  1) Estadisticas género");
                 System.out.println("  2) Revisión de Entrega");
                 System.out.println("  3) Contabilición de Libros");
                 System.out.println("  4) Revisión de Inventario");
