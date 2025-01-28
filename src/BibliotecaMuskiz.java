@@ -14,9 +14,9 @@ public class BibliotecaMuskiz {
                 // Se imprime menu
                 System.out.println("Gestión de la Biblioteca de Muskiz");
                 System.out.println("----------------------------------");
-                System.out.println("  1) Estadisticas género");
+                System.out.println("  1) Votación de Género");
                 System.out.println("  2) Revisión de Entrega");
-                System.out.println("  3) Contabilición de Libros");
+                System.out.println("  3) Estadisticas de Libros");
                 System.out.println("  4) Revisión de Inventario");
                 System.out.println("  0) Salir");
                 System.out.print("Escoge una de las opciones: ");
@@ -33,27 +33,27 @@ public class BibliotecaMuskiz {
                         break;
 
                     case 1:
-                        System.out.println("Estadisticas género");
-                        System.out.println("-------------------");
-                        ejercicio1(teclado);
+                        System.out.println("Votación de Género");
+                        System.out.println("------------------");
+                        votacion(teclado);
                         break;
 
                     case 2:
                         System.out.println("Revisión de Entrega");
                         System.out.println("-------------------");
-                        ejercicio2(teclado);
+                        revision(teclado);
                         break;
 
                     case 3:
-                        System.out.println("Contabilición de Libros");
+                        System.out.println("Estadisticas de Libros");
                         System.out.println("-----------------------");
-                        ejercicio3b(teclado);
+                        estadisticas(teclado);
                         break;
 
                     case 4:
                         System.out.println("Revisión de Inventario");
                         System.out.println("----------------------");
-                        ejercicio4(teclado);
+                        inventario(teclado);
                         break;
 
                     default:
@@ -69,7 +69,7 @@ public class BibliotecaMuskiz {
         }
     }
 
-    public static void ejercicio1(Scanner teclado) {
+    public static void votacion(Scanner teclado) {
         // Variables para el primer ejercicio (estadísticas de género)
         int cont = 0;
         int op;
@@ -320,7 +320,7 @@ public class BibliotecaMuskiz {
         }
     }
 
-    public static void ejercicio2(Scanner teclado) {
+    public static void revision(Scanner teclado) {
 
         // Configuración del formato de fecha
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -357,7 +357,7 @@ public class BibliotecaMuskiz {
 
     }
 
-    public static void ejercicio3b(Scanner teclado) {
+    public static void estadisticas(Scanner teclado) {
         // Se declara variables iniciales
         String titulo = "", titMax = "", titmin = "";
         int pag = 0, totPag = 0, pagMax = 0, pagMin = Integer.MAX_VALUE, cantLib = 0, cantLib300 = 0;
@@ -417,7 +417,7 @@ public class BibliotecaMuskiz {
         }
     }
 
-    public static void ejercicio4(Scanner teclado) {
+    public static void inventario(Scanner teclado) {
         // Se declara variables y se les da un valor inicial
         int totLibros = 4500, numLibros = 0;
         String titLibros;
