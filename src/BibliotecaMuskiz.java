@@ -145,7 +145,7 @@ public class BibliotecaMuskiz {
                         genero4 = "Drama Coreano";
                     } else {
                         votos3 = contDrama;
-                        genero3 = "Narrativa Fantástica";
+                        genero3 = "Drama Coreano";
                         votos4 = contNarrativa;
                         genero4 = "Narrativa Fantástica";
                     }
