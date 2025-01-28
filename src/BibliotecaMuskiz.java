@@ -41,6 +41,7 @@ public class BibliotecaMuskiz {
                     case 2:
                         System.out.println("Revisión de Entrega");
                         System.out.println("-------------------");
+                        ejercicio2(teclado);
                         break;
 
                     case 3:
@@ -84,7 +85,7 @@ public class BibliotecaMuskiz {
         String genero2 = "";
         String genero3 = "";
         String genero4 = "";
-        
+
         try {
             // Menú para preguntar al usuario cuál es su género favorito
             while (cont < 100) {
@@ -95,7 +96,7 @@ public class BibliotecaMuskiz {
                 System.out.println("4- Drama Coreano");
                 System.out.print("Escoge su opción: ");
                 op = teclado.nextInt();
-                
+
                 switch (op) {
                     case 1:
                         contPolitica++;
@@ -117,9 +118,10 @@ public class BibliotecaMuskiz {
                         System.out.println("Este número no corresponde a ningún género, inténtelo de nuevo");
                         break;
                 }
-    
+
             }
-            // Encontrar cuántos votos ha obtenido cada género, cuál es el más votado y ordenarlos de mayor a menor votado
+            // Encontrar cuántos votos ha obtenido cada género, cuál es el más votado y
+            // ordenarlos de mayor a menor votado
             if (contPolitica >= contNarrativa && contPolitica >= contTerror && contPolitica >= contDrama) {
                 votos1 = contPolitica;
                 genero1 = "Teoría Política";
@@ -178,7 +180,7 @@ public class BibliotecaMuskiz {
                         votos4 = contDrama;
                         genero4 = "Drama Coreano";
                     } else {
-                        votos3 = contDrama ;
+                        votos3 = contDrama;
                         genero3 = "Dreama Coreano";
                         votos4 = contTerror;
                         genero4 = "Terror Espacial";
@@ -215,7 +217,7 @@ public class BibliotecaMuskiz {
             } else if (contTerror >= contPolitica && contTerror >= contNarrativa && contTerror >= contDrama) {
                 votos1 = contTerror;
                 genero1 = "Terror Espacial";
-                if (contPolitica >= contNarrativa &&  contPolitica >= contDrama) {
+                if (contPolitica >= contNarrativa && contPolitica >= contDrama) {
                     votos2 = contPolitica;
                     genero2 = "Teoría Política";
                     if (contNarrativa >= contDrama) {
@@ -261,7 +263,7 @@ public class BibliotecaMuskiz {
             } else {
                 votos1 = contDrama;
                 genero1 = "Drama Coreano";
-                if (contPolitica >= contNarrativa &&  contPolitica >= contTerror) {
+                if (contPolitica >= contNarrativa && contPolitica >= contTerror) {
                     votos2 = contPolitica;
                     genero2 = "Teoría Política";
                     if (contNarrativa >= contTerror) {
@@ -269,7 +271,7 @@ public class BibliotecaMuskiz {
                         genero3 = "Terror Espacial";
                         votos4 = contDrama;
                         genero4 = "Drama Coreano";
-                    } else{
+                    } else {
                         votos3 = contDrama;
                         genero3 = "Drama Coreano";
                         votos4 = contTerror;
@@ -297,7 +299,7 @@ public class BibliotecaMuskiz {
                         genero3 = "Teoría Política";
                         votos4 = contNarrativa;
                         genero4 = "Narrativa Fantástica";
-                    } else{
+                    } else {
                         votos3 = contNarrativa;
                         genero3 = "Narrativa Fantástica";
                         votos4 = contPolitica;
@@ -308,8 +310,10 @@ public class BibliotecaMuskiz {
             // Género más votadoo
             System.out.println("El género más votado ha sido " + genero1 + ", con " + votos1 + " votos.");
             // Géneros ordenados de mayor a menor
-            System.out.println("El orden de géneros má votados es: " + genero1 + " con " + votos1 + " votos, " + genero2 + " con " + votos2 + " votos, " + genero3 + " con " + votos3 + " votos y " + genero4 + " con " + votos4 + " votos.");
-            
+            System.out.println("El orden de géneros má votados es: " + genero1 + " con " + votos1 + " votos, " + genero2
+                    + " con " + votos2 + " votos, " + genero3 + " con " + votos3 + " votos y " + genero4 + " con "
+                    + votos4 + " votos.");
+
         } catch (Exception e) {
             // Se indica el error que se ha sucedido
             System.out.println("Se ha producido un error: " + e.getMessage());
@@ -321,37 +325,47 @@ public class BibliotecaMuskiz {
         // Configuración del formato de fecha
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // Entrada de datos
-        System.out.print("Ingrese la fecha de reserva del libro (formato: AAAA-MM-DD): ");
-        String fechaEntregaStr = teclado.nextLine();
+        // Captura de errores
+        try {
+            // Entrada de datos
+            System.out.print("Ingrese la fecha de reserva del libro (formato: AAAA-MM-DD): ");
+            String fechaEntregaStr = teclado.nextLine();
 
-        System.out.print("Ingrese el número máximo de días de reserva: ");
-        int diasMaximos = teclado.nextInt();
+            System.out.print("Ingrese el número máximo de días de reserva: ");
+            int diasMaximos = teclado.nextInt();
 
-        // Obtener la fecha actual
-        LocalDate fechaActual = LocalDate.now();
+            // Obtener la fecha actual
+            LocalDate fechaActual = LocalDate.now();
 
-        // Parsear la fecha de entrega
-        LocalDate fechaEntrega = LocalDate.parse(fechaEntregaStr, formatoFecha);
+            // Parsear la fecha de entrega
+            LocalDate fechaEntrega = LocalDate.parse(fechaEntregaStr, formatoFecha);
 
-        // Calcular la fecha límite de reserva
-        LocalDate fechaLimite = fechaEntrega.plusDays(diasMaximos);
+            // Calcular la fecha límite de reserva
+            LocalDate fechaLimite = fechaEntrega.plusDays(diasMaximos);
 
-        // Validar si se ha pasado la fecha
-        if (fechaActual.isAfter(fechaLimite)) {
-            System.out.println("Se ha pasado de fecha.");
-            System.out.println("Se debe penalizar al usuario");
-        } else {
-            System.out.println("La fecha está dentro de plazo.");
+            // Validar si se ha pasado la fecha
+            if (fechaActual.isAfter(fechaLimite)) {
+                System.out.println("Se ha pasado de fecha.");
+                System.out.println("Se debe penalizar al usuario");
+            } else {
+                System.out.println("La fecha está dentro de plazo.");
+            }
+        } catch (Exception e) {
+            // Se indica el error que se ha sucedido
+            System.out.println("Se ha producido un error: " + e.getMessage());
         }
 
-        teclado.close();
     }
 
     public static void ejercicio3b(Scanner teclado) {
+        // Se declara variables iniciales
         String titulo = "", titMax = "", titmin = "";
         int pag = 0, totPag = 0, pagMax = 0, pagMin = Integer.MAX_VALUE, cantLib = 0, cantLib300 = 0;
+        // Se realiza capturas de errores
         try {
+            // Realizamos un bucle en el cual se saldra cuando ponga Termine
+            // Se le pedira titulo del libro y su numero de paginas para hayar la media de
+            // paginas, cuantos son más de 300 pags y el libro con más y con menos paginas
             while (!titulo.equals("Termine")) {
                 System.out.print("Introduce titulo del libro (Introduzca \"Termine\" para acabar): ");
                 titulo = teclado.nextLine();
@@ -375,6 +389,7 @@ public class BibliotecaMuskiz {
                     cantLib300++;
                 }
             }
+            // Segun cuantos datos haya introducido, se le mostrara un mensaje distinto
             if (cantLib == 0) {
                 System.out.println("No se ha introducido ningun libro");
             } else {
