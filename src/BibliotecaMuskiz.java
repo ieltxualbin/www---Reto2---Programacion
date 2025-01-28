@@ -419,7 +419,7 @@ public class BibliotecaMuskiz {
 
     public static void inventario(Scanner teclado) {
         // Se declara variables y se les da un valor inicial
-        int totLibros = 4500, numLibros = 0;
+        int totLibros = 45000, numLibros = 0;
         String titLibros;
         // Se realiza una captura de errores
         try {
